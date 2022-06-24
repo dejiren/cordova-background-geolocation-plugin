@@ -19,8 +19,7 @@ public class LocationTemplateFactory {
 
     public static LocationTemplate fromJSON(Object json) throws JSONException {
         if (GisAPILocationTemplate.isSupportLocationTemplate(json)) {
-            return new GisAPILocationTemplate((HashMap) Convert.toMap(
-                    GisAPILocationTemplate.locations(json)), GisAPILocationTemplate.appId(json));
+            return new GisAPILocationTemplate((HashMap) Convert.toMap((JSONObject) json));
         }
 
         if (json instanceof JSONObject) {
