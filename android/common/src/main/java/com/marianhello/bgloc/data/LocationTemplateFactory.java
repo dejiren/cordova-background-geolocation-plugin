@@ -18,6 +18,11 @@ import java.util.Iterator;
 public class LocationTemplateFactory {
 
     public static LocationTemplate fromJSON(Object json) throws JSONException {
+        if (GisAPILocationTemplate.isSupportLocationTemplate(json)) {
+            return new GisAPILocationTemplate((HashMap) Convert.toMap(
+                    GisAPILocationTemplate.locations(json)), GisAPILocationTemplate.appId(json));
+        }
+
         if (json instanceof JSONObject) {
             JSONObject jsonObject = (JSONObject) json;
 

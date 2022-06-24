@@ -61,6 +61,7 @@
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/BackgroundLocation.java" target-dir="src/com/marianhello/bgloc/data" />
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/ConfigurationDAO.java" target-dir="src/com/marianhello/bgloc/data" />
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/DAOFactory.java" target-dir="src/com/marianhello/bgloc/data" />
+        <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/GisAPILocationTemplate.java" target-dir="src/com/marianhello/bgloc/data" />
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/HashMapLocationTemplate.java" target-dir="src/com/marianhello/bgloc/data" />
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/LocationDAO.java" target-dir="src/com/marianhello/bgloc/data" />
         <source-file src="android/common/src/main/java/com/marianhello/bgloc/data/LocationTemplateFactory.java" target-dir="src/com/marianhello/bgloc/data" />

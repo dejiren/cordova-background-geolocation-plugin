@@ -17,6 +17,10 @@ abstract public class AbstractLocationTemplate implements LocationTemplate, Seri
     public static final String BUNDLE_KEY = "template";
     public abstract LocationTemplate clone();
 
+    public boolean needJsonAsArray() {
+        return true;
+    }
+
     static class LocationMapper {
         private BackgroundLocation location;
 
