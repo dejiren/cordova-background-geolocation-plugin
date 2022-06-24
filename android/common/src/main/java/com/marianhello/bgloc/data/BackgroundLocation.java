@@ -912,6 +912,9 @@ public class BackgroundLocation implements Parcelable {
         if ("@time".equals(key)) {
             return time;
         }
+        if ("@timestamp".equals(key)) {
+            return (long)(time / 1000);
+        }
         if ("@latitude".equals(key)) {
             return latitude;
         }
