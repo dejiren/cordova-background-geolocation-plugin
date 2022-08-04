@@ -31,6 +31,8 @@
         <preference name="ACCOUNT_LABEL" default="@string/app_name" />
         <preference name="ACCOUNT_TYPE" default="$PACKAGE_NAME.account" />
         <preference name="CONTENT_AUTHORITY" default="$PACKAGE_NAME" />
+        <preference name="BGLOCSERVICE_NAME" default="Background Location" />
+        <preference name="ANDROIDPERMISSION_NAME" default="Permission Service" />
 
         <framework src="com.google.android.gms:play-services-location:$GOOGLE_PLAY_SERVICES_VERSION" />
         <framework src="androidx.core:core:1.1.0" />
@@ -130,7 +132,7 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-            <service
+            <!-- <service
                 android:name="com.marianhello.bgloc.sync.SyncService"
                 android:exported="true"
                 android:process=":sync">
@@ -139,7 +141,7 @@
                 </intent-filter>
                 <meta-data android:name="android.content.SyncAdapter"
                     android:resource="@xml/syncadapter" />
-            </service>
+            </service> -->
             <service
                 android:name="com.marianhello.bgloc.sync.AuthenticatorService">
                 <intent-filter>
@@ -196,6 +198,8 @@
             <string name="plugin_bgloc_account_name">$ACCOUNT_NAME</string>
             <string name="plugin_bgloc_account_type">$ACCOUNT_TYPE</string>
             <string name="plugin_bgloc_content_authority">$CONTENT_AUTHORITY</string>
+            <string name="plugin_bgloc_service_name">$BGLOCSERVICE_NAME</string>
+            <string name="plugin_bgloc_permission_name">$ANDROIDPERMISSION_NAME</string>
         </config-file>
 
         <edit-config file="res/xml/authenticator.xml" target="/*" mode="overwrite">
