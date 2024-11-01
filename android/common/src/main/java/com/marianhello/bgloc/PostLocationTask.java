@@ -6,6 +6,7 @@ import com.marianhello.logging.LoggerManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -152,7 +153,16 @@ public class PostLocationTask {
         int responseCode;
 
         try {
-            responseCode = HttpPostService.postJSON(url, jsonLocations, mConfig.getHttpHeaders());
+            if (mConfig.getTemplate().needJsonAsArray()) {
+                responseCode = HttpPostService.postJSON(url, jsonLocations, mConfig.getHttpHeaders());
+            } else {
+                Object postObject = jsonLocations.opt(0);
+                if (postObject instanceof JSONObject) {
+                    responseCode = HttpPostService.postJSON(url, (JSONObject) postObject, mConfig.getHttpHeaders());
+                } else {
+                    responseCode = HttpPostService.postJSON(url, (JSONArray) postObject, mConfig.getHttpHeaders());
+                }
+            }
         } catch (Exception e) {
             mHasConnectivity = mConnectivityListener.hasConnectivity();
             logger.warn("Error while posting locations: {}", e.getMessage());

@@ -96,32 +96,34 @@ public class NotificationHelper {
     public static void registerAllChannels(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String appName = ResourceResolver.newInstance(context).getString(("app_name"));
+            String serviceChannelName = ResourceResolver.newInstance(context).getString(("plugin_bgloc_service_name"));
+            String permissionChannelName = ResourceResolver.newInstance(context).getString(("plugin_bgloc_permission_name"));
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             android.app.NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(createServiceChannel(appName));
-            notificationManager.createNotificationChannel(createSyncChannel());
-            notificationManager.createNotificationChannel(createAndroidPermissionsChannel(appName));
+            notificationManager.createNotificationChannel(createServiceChannel(serviceChannelName));
+            notificationManager.deleteNotificationChannel(SYNC_CHANNEL_ID);
+            notificationManager.createNotificationChannel(createAndroidPermissionsChannel(permissionChannelName));
         }
     }
 
     public static void registerServiceChannel(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String appName = ResourceResolver.newInstance(context).getString(("app_name"));
+            String channelName = ResourceResolver.newInstance(context).getString(("plugin_bgloc_service_name"));
             // Create the NotificationChannel, but only on API 26+ because
             // the NotificationChannel class is new and not in the support library
             android.app.NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(createServiceChannel(appName));
+            notificationManager.createNotificationChannel(createServiceChannel(channelName));
         }
     }
 
     public static void registerSyncChannel(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Create the NotificationChannel, but only on API 26+ because
-            // the NotificationChannel class is new and not in the support library
-            android.app.NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(createSyncChannel());
-        }
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        //     // Create the NotificationChannel, but only on API 26+ because
+        //     // the NotificationChannel class is new and not in the support library
+        //     android.app.NotificationManager notificationManager = (android.app.NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        //     notificationManager.createNotificationChannel(createSyncChannel());
+        // }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

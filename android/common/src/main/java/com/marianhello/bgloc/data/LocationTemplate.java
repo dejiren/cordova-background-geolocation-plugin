@@ -8,5 +8,6 @@ import org.json.JSONException;
 
 public interface LocationTemplate {
     Object locationToJson(BackgroundLocation location) throws JSONException;
+    boolean needJsonAsArray();
     boolean isEmpty();
 }
